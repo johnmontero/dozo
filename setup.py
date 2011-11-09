@@ -16,11 +16,10 @@ setup(
     name                    = "dozo",
     version                 = "0.0.1",
     include_package_data    = True,
-                            
-    # metadata              
+    # metadata
     author                  = "John Montero",
     author_email            = "jmonteroc [at] gmail [dot] com",
-    description             = "Run commands",
+    description             = "Run your own subcommands",
     long_description        = open('README.rst').read(),
     packages                = find_packages(exclude=['ez_setup', 'tests']),
     classifiers             = [
@@ -34,9 +33,8 @@ setup(
         'Programming Language :: Python :: 2.7'
     ],
     license                 = "BSD",
-    keywords                = "command, run",
+    keywords                = "run, subcommand",
     url                     = "https://github.com/johnmontero/dozo",
-                            
     install_requires        = requirements,
     entry_points            =  {
         'console_scripts': [

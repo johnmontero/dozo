@@ -3,6 +3,7 @@ import sys
 import types
 from dozo.config    import get_config_value
 
+
 def get_commands(extend=False):
     """
     Returns a list of all the command names that are available.
@@ -10,7 +11,7 @@ def get_commands(extend=False):
     Returns an empty list if no commands are defined.
     """
     if extend:
-        command_dir = '%s/commands' % get_config_value('dozo-ext')
+        command_dir = '%s/commands' % get_config_value('dozo-extend')
     else:
         command_dir = os.path.join('/'.join(__file__.split('/')[:-1]), 'commands')
     
@@ -26,15 +27,21 @@ def load_command_class(name):
     try:
         __import__(full_name)
     except:
-        cmd_extend_path = get_config_value('dozo_extend')
+        path_ext = ('/'.join(get_config_value('dozo-extend').split('/')[:-1]))
+        path_ext_cmd = get_config_value('dozo-extend').split('/')[-1:]
+            
+        if  path_ext not in sys.path:
+            sys.path.append(path_ext)
+            
+        full_name = '%s.commands.%s' % ('/'.join(path_ext_cmd[-1:]), name)
 
-        if cmd_extend_path not in sys.path or cmd_extend_path is None:
-            sys.path.append(cmd_extend_path)
-        else:
-            cmd_extend_path = ''    
-        full_name = '%s.commands.%s' % ('/'.join(
-                                        cmd_extend_path.split('/')[-1:]), name)
-        __import__(full_name)
+        try:
+            __import__(full_name)
+        except Exception, error:
+            #sys.stderr.write(error)
+            print error
+            sys.exit(1)
+
     return sys.modules[full_name].Command()
 
 

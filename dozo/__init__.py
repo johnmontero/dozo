@@ -40,22 +40,23 @@ Options:
         options  = ['--%s' % cmd for cmd in commands]
         options_help = ['    --%-20s  %-5s' % (cmd, get_sumary_commad(cmd))
                          for cmd in commands]
+
+        self.dozo_help += '\n'.join(options_help)+'\n\n'
+
         
         """ Commands Extend
         """
         commands_ext = get_commands(extend=True)
 
-        commands_ext.sort()
-        options_ext  = ['--%s' % cmd for cmd in commands_ext]
-        options_ext_help = ['    --%-20s  %-5s' % (cmd, get_sumary_commad(cmd))
+        if len(commands_ext) is not 0:
+            commands_ext.sort()
+            options_ext  = ['--%s' % cmd for cmd in commands_ext]
+            options_ext_help = ['    --%-20s  %-5s' % (cmd, get_sumary_commad(cmd))
                          for cmd in commands_ext]
 
-        options.extend(options_ext)
+            options.extend(options_ext)
 
-        self.dozo_help += '\n'.join(options_help)+'\n\n'
-        
-        if len(commands_ext) > 0:
-            self.dozo_help += 'Options Extend\n'+''.join(options_ext_help)+'\n\n'
+            self.dozo_help += 'Options Extend:\n'+'\n'.join(options_ext_help)+'\n\n'
         
         args = ArgOpts(options)
         args.parse_args(argv)

@@ -22,7 +22,7 @@ class Command(BaseCommand):
 
 class Command(BaseCommand):
     """
-    Dozo create subcommand
+    Create own subcommand
     """
     
     # command information
