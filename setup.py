@@ -9,7 +9,8 @@ except ImportError:
 # determine requirements
 #
 requirements = [
-  "guachi"
+  "guachi",
+  "konira"
 ]
 
 setup(

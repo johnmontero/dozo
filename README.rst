@@ -7,7 +7,7 @@ Installation
 ------------
 If you have Setup Tools installed (along with Python) in your machine you can do::
 
-    sudo pip nstall dozo
+    sudo pip install dozo
 
 If you download the tar.gz file or the source code, use the setup.py file to install it::
 
