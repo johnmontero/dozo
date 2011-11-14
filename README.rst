@@ -22,12 +22,12 @@ You only need two steps:
     
 * First specify the directory that will have your own code, with the option::
 
-    dozo --dozo-extend /home/dozo/dozo_extend
+    dozo --path-extend /home/dozo/dozo_extend
 
 * Second indicate the name of your own choice dozo extended to create,
   with the option::
 
-    dozo --dozo-create hello
+    dozo --create hello
 
 * Third run your choice, with the option::
 
@@ -47,9 +47,9 @@ Options
 
 **--config-values**         Displays the current configuration values used
 
-**--dozo-create**           Create your own option command
+**--create**                Create your own option command
 
-**--dozo-extend**           Path to extend options commands
+**--path-extend**           Path to extend options commands
 
 Questions? Requests?
 ---------------------
