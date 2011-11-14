@@ -22,11 +22,11 @@ class Command(BaseCommand):
 
 class Command(BaseCommand):
     """
-    Create own subcommand
+    Create your own option command.
     """
     
     # command information
-    usage = '--dozo-create name_subcommand'
+    usage = '--dozo-create name_option_command'
     summary = __doc__.strip().splitlines()[0].rstrip('.')
      
     def handle(self):

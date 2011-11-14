@@ -10,6 +10,7 @@ except ImportError:
 #
 requirements = [
   "guachi",
+  "coima",
   "konira"
 ]
 
@@ -20,7 +21,8 @@ setup(
     # metadata
     author                  = "John Montero",
     author_email            = "jmonteroc [at] gmail [dot] com",
-    description             = "Run your own subcommands",
+    description             = """Dozo is the base of one application of line command for
+create and run your own code written in python as options own of Dozo.""",
     long_description        = open('README.rst').read(),
     packages                = find_packages(exclude=['ez_setup', 'tests']),
     classifiers             = [
@@ -34,7 +36,7 @@ setup(
         'Programming Language :: Python :: 2.7'
     ],
     license                 = "BSD",
-    keywords                = "run, subcommand",
+    keywords                = "run, option command, console",
     url                     = "https://github.com/johnmontero/dozo",
     install_requires        = requirements,
     entry_points            =  {

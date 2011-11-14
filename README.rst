@@ -1,7 +1,9 @@
-Dozo - Run your own subcommand
-==============================
+Dozo
+====
 
-Create and run your own script written in python as subcommands.
+The main goal is to get Dozo is the base of one application of line command for
+create and run your own code written in python as options own of Dozo.
+
 
 Installation
 ------------
@@ -12,6 +14,26 @@ If you have Setup Tools installed (along with Python) in your machine you can do
 If you download the tar.gz file or the source code, use the setup.py file to install it::
 
     python setup.py install
+
+
+How do Use?
+-----------
+You only need two steps::
+    
+* First specify the directory that will have your own code,
+  with the option::
+
+    dozo --dozo-extend /home/dozo/dozo_extend
+
+* Second indicate the name of your own choice dozo extended to create,
+  with the option::
+
+    dozo --dozo-create hello
+
+* Third run your choice, with the option::
+
+    dozo --hello
+
 
 .. highlight:: ruby
 
@@ -31,8 +53,10 @@ If you download the tar.gz file or the source code, use the setup.py file to ins
     	--config-export         Export the current configuration values used
     	--config-import         Import the configuration values new
     	--config-values         Displays the current configuration values used
-    	--dozo-create           Create subcommand
-    	--dozo-extend           Path to extend subcommand
+    	--dozo-create           Create your own option command
+    	--dozo-extend           Path to extend options commands
+
+
 
 
 
@@ -40,5 +64,5 @@ If you download the tar.gz file or the source code, use the setup.py file to ins
 Questions? Requests?
 ---------------------
 
-Fork the project and start contributing. 
+Fork the project and start contributing.
 If you have any ideas or suggestions send me an email: jmonteroc at gmail dot com
