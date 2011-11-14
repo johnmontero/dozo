@@ -18,10 +18,9 @@ If you download the tar.gz file or the source code, use the setup.py file to ins
 
 How do Use?
 -----------
-You only need two steps::
+You only need two steps:
     
-* First specify the directory that will have your own code,
-  with the option::
+* First specify the directory that will have your own code, with the option::
 
     dozo --dozo-extend /home/dozo/dozo_extend
 
@@ -34,35 +33,27 @@ You only need two steps::
 
     dozo --hello
 
+Options
+-------
+**--version, version** Shows the current installed version
 
-.. highlight:: ruby
+**--config-add**            Add config value
 
-::
+**--config-del**            Delete config value
 
-	dozo: Run your own subcommand
+**--config-export**         Export the current configuration values used
 
-	Version: 0.0.1
+**--config-import**         Import the configuration values new
 
-	Run:
-    	dozo [options]  
+**--config-values**         Displays the current configuration values used
 
-	Options:
-    	--version, version      Shows the current installed version
-    	--config-add            Add config value
-    	--config-del            Delete config value
-    	--config-export         Export the current configuration values used
-    	--config-import         Import the configuration values new
-    	--config-values         Displays the current configuration values used
-    	--dozo-create           Create your own option command
-    	--dozo-extend           Path to extend options commands
+**--dozo-create**           Create your own option command
 
-
-
-
-
+**--dozo-extend**           Path to extend options commands
 
 Questions? Requests?
 ---------------------
 
 Fork the project and start contributing.
+
 If you have any ideas or suggestions send me an email: jmonteroc at gmail dot com
