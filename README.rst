@@ -18,20 +18,24 @@ If you download the tar.gz file or the source code, use the setup.py file to ins
 
 How do Use?
 -----------
-You only need two steps:
-    
-* First specify the directory that will have your own code, with the option::
+Specify the directory that will have your own code, with the option::
 
     dozo --path-extend /home/dozo/dozo_extend
 
-* Second indicate the name of your own choice dozo extended to create,
+Indicate the name of your own choice dozo extended to create,
   with the option::
 
     dozo --create hello
 
-* Third run your choice, with the option::
+Run your choice, with the option::
 
     dozo --hello
+    Please use option:
+        dozo --hello value
+
+    dozo --hello dozo
+    Option: --hello
+    Value : dozo
 
 Options
 -------
