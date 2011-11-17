@@ -22,8 +22,8 @@ Specify the directory that will have your own code, with the option::
 
     dozo --path-extend /home/dozo/dozo_extend
 
-Indicate the name of your own choice dozo extended to create,
-  with the option::
+Indicate the name of your own choice dozo extended to create, 
+with the option::
 
     dozo --create hello
 
