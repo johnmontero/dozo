@@ -10,7 +10,7 @@ except ImportError:
 #
 requirements = [
   "guachi",
-  "coima",
+  "pystache",
   "konira"
 ]
 
