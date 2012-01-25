@@ -46,7 +46,7 @@ class Command(BaseCommand):
             if value in get_commands() or value in get_commands(extend=True):
                 raise CommandError("\nOption command %s exist.\n" % value)
 
-            filename = '%s/commands/%s.py' % ( get_config_value('dozo-extend'),
+            filename = '%s/commands/%s.py' % ( get_config_value('path-extend'),
                                                value )
             f = open(filename,'w+')    
             f.write(pystache.render(TEMPLATE_OPTION_COMMAND,

@@ -11,7 +11,7 @@ def get_commands(extend=False):
     Returns an empty list if no commands are defined.
     """
     if extend:
-        command_dir = '%s/commands' % get_config_value('dozo-extend')
+        command_dir = '%s/commands' % get_config_value('path-extend')
     else:
         command_dir = os.path.join('/'.join(__file__.split('/')[:-1]), 'commands')
     
@@ -27,8 +27,8 @@ def load_command_class(name):
     try:
         __import__(full_name)
     except:
-        path_ext = ('/'.join(get_config_value('dozo-extend').split('/')[:-1]))
-        path_ext_cmd = get_config_value('dozo-extend').split('/')[-1:]
+        path_ext = ('/'.join(get_config_value('path-extend').split('/')[:-1]))
+        path_ext_cmd = get_config_value('path-extend').split('/')[-1:]
             
         if  path_ext not in sys.path:
             sys.path.append(path_ext)
