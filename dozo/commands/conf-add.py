@@ -7,13 +7,13 @@ class Command(BaseCommand):
     """
     
     # command information
-    usage = '--config-add key=value'
+    usage = '--conf-add key=value'
     summary = __doc__.strip().splitlines()[0].rstrip('.')
      
     def handle(self):
         
         conf = db.stored_config()        
-        arg = self.args.get_value('--config-add')
+        arg = self.args.get_value('--conf-add')
         if arg is not None:
             try:
                 key, value = arg.split('=')

@@ -7,13 +7,13 @@ class Command(BaseCommand):
     """
     
     # command information
-    usage = '--config-import /path/to/import-file.conf'
+    usage = '--conf-import /path/to/import-file.conf'
     summary = __doc__.strip().splitlines()[0].rstrip('.')
      
     def handle(self):
         
         conf = db.stored_config()
-        filename = self.args.get_value('--config-import')
+        filename = self.args.get_value('--conf-import')
         if filename is not None:
             try:
                 f = open(filename,'r+')

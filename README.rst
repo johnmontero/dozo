@@ -16,12 +16,12 @@ How do Use?
 -----------
 Specify the directory that will have your own code, with the option::
 
-    dozo --path-extend /home/dozo/dozo_extend
+    dozo --cmd-path-ext /home/dozo/dozo_extend
 
 Indicate the name of your own choice dozo extended to create, 
 with the option::
 
-    dozo --create hello
+    dozo --cmd-create hello
 
 Run your choice, with the option::
 
@@ -35,14 +35,15 @@ Run your choice, with the option::
 
 Options
 -------
-**--version, version**      Shows the current installed version
-**--config-add**            Add config value
-**--config-del**            Delete config value
-**--config-export**         Export the current configuration values used
-**--config-import**         Import the configuration values new
-**--config-values**         Displays the current configuration values used
-**--create**                Create your own option command
-**--path-extend**           Path to extend options commands
+    **--version, version**      Shows the current installed version
+    **--cmd-create**            Create extend command
+    **--cmd-edit**              Edit extended command
+    **--cmd-path-ext**          Path to extend commands
+    **--conf-add**              Add config value
+    **--conf-del**              Delete config value
+    **--conf-export**           Export the current configuration values used
+    **--conf-import**           Import the configuration values new
+    **--conf-values**           Displays the current configuration values used
 
 Questions? Requests?
 ---------------------

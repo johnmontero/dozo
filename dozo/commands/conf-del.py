@@ -7,13 +7,13 @@ class Command(BaseCommand):
     """
     
     # command information
-    usage = '--config-del key1,key2,key3,...'
+    usage = '--conf-del key1,key2,key3,...'
     summary = __doc__.strip().splitlines()[0].rstrip('.')
      
     def handle(self):
         
         conf = db.stored_config()        
-        arg = self.args.get_value('--config-del')
+        arg = self.args.get_value('--conf-del')
         if arg is not None:
             try:
                 for key in arg.split(','):

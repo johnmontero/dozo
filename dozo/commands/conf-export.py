@@ -7,13 +7,13 @@ class Command(BaseCommand):
     """
     
     # command information
-    usage = '--config-export /path/to/export-file.conf'
+    usage = '--conf-export /path/to/export-file.conf'
     summary = __doc__.strip().splitlines()[0].rstrip('.')
      
     def handle(self):
         
         conf = db.stored_config()
-        filename = self.args.get_value('--config-export')
+        filename = self.args.get_value('--conf-export')
         if filename is not None:
             try:
                 f = open(filename,'w+')

@@ -7,7 +7,7 @@ class Command(BaseCommand):
     """
     
     # command information
-    usage = '--config-values'
+    usage = '--conf-values'
     summary = __doc__.strip().splitlines()[0].rstrip('.')
      
     def handle(self):

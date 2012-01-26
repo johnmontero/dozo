@@ -10,7 +10,7 @@ from dozo.commands  import BaseCommand, CommandError
 
 class Command(BaseCommand):
     """
-    Description {{name}}.
+    {{name}} command.
     """
     
     # command information
@@ -29,7 +29,7 @@ class Command(BaseCommand):
 
 class Command(BaseCommand):
     """
-    Create your own option command.
+    Create extend command.
     """
     
     # command information
@@ -38,7 +38,7 @@ class Command(BaseCommand):
      
     def handle(self):
 
-        value = self.args.get_value('--create')
+        value = self.args.get_value('--cmd-create')
         if value is not None:
             if value.endswith('.py'):
                 raise CommandError("\nNot include '.py'\n")
