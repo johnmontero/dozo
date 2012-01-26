@@ -33,17 +33,6 @@ Run your choice, with the option::
     Option: --hello
     Value : dozo
 
-Options
--------
-**--version, version**      Shows the current installed version
-**--cmd-create**            Create extend command
-**--cmd-edit**              Edit extended command
-**--cmd-path-ext**          Path to extend commands
-**--conf-add**              Add config value
-**--conf-del**              Delete config value
-**--conf-export**           Export the current configuration values used
-**--conf-import**           Import the configuration values new
-**--conf-values**           Displays the current configuration values used
 
 Questions? Requests?
 ---------------------
