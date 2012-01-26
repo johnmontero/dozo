@@ -1,9 +1,5 @@
-Dozo
-====
-
-The main goal is to get Dozo is the base of one application of line command for
-create and run your own code written in python as options own of Dozo.
-
+dozo: typing commands on the fly.
+=================================
 
 Installation
 ------------
@@ -39,20 +35,13 @@ Run your choice, with the option::
 
 Options
 -------
-**--version, version** Shows the current installed version
-
+**--version, version**      Shows the current installed version
 **--config-add**            Add config value
-
 **--config-del**            Delete config value
-
 **--config-export**         Export the current configuration values used
-
 **--config-import**         Import the configuration values new
-
 **--config-values**         Displays the current configuration values used
-
 **--create**                Create your own option command
-
 **--path-extend**           Path to extend options commands
 
 Questions? Requests?
