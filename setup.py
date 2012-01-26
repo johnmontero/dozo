@@ -11,7 +11,8 @@ except ImportError:
 requirements = [
   "guachi",
   "pystache",
-  "konira"
+  "konira",
+  "envoy"
 ]
 
 setup(
@@ -21,8 +22,7 @@ setup(
     # metadata
     author                  = "John Montero",
     author_email            = "jmonteroc [at] gmail [dot] com",
-    description             = """Dozo is the base of one application of line command for
-create and run your own code written in python as options own of Dozo.""",
+    description             = """Dozo - typing commands on the fly.""",
     long_description        = open('README.rst').read(),
     packages                = find_packages(exclude=['ez_setup', 'tests']),
     classifiers             = [
