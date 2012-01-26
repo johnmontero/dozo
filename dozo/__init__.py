@@ -1,4 +1,15 @@
 # -*- coding: utf-8-*-
+"""
+dozo: typing commands on the fly.
+
+Version: {0}
+
+Usage:
+    dozo [options] 
+
+Options:
+    --version, version      Shows the current installed version
+"""
 
 import sys
 from dozo.argopts   import ArgOpts
@@ -9,19 +20,6 @@ from dozo.util      import out, error
 __version__         = '0.0.1'
 
 class DozoCommands(object):
-
-    dozo_help = """
-dozo: Run your own subcommand
-
-Version: %s
-
-Run:
-    dozo [options]  
-
-Options:
-    --version, version      Shows the current installed version.
-""" % __version__
-
 
     def __init__(self, argv=None, test=True):
         self.test = test
@@ -40,8 +38,9 @@ Options:
         options  = ['--%s' % cmd for cmd in commands]
         options_help = ['    --%-20s  %-5s' % (cmd, get_sumary_commad(cmd))
                          for cmd in commands]
-
-        self.dozo_help += '\n'.join(options_help)+'\n\n'
+        
+        dozo_help  = __doc__.format(__version__)
+        dozo_help += '\n'.join(options_help)+'\n\n'
 
         
         """ Commands Extend
@@ -56,13 +55,13 @@ Options:
 
             options.extend(options_ext)
 
-            self.dozo_help += 'Options Extend:\n'+'\n'.join(options_ext_help)+'\n\n'
+            dozo_help += 'Options Extend:\n'+'\n'.join(options_ext_help)+'\n\n'
         
         args = ArgOpts(options)
         args.parse_args(argv)
                         
         if args.catches_help():
-            out(self.dozo_help)
+            out(dozo_help)
 
         elif args.catches_version():
             message = "dozo version %s\n" % __version__
@@ -77,7 +76,7 @@ Options:
             except KeyboardInterrupt:
                 out("Exiting from dozo.\n")
         else:
-            out(self.dozo_help)
+            out(dozo_help)
 
 
 def main():
