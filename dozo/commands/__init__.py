@@ -14,29 +14,3 @@ class CommandError(Exception):
 
     """
     pass
-
-
-class BaseCommand(object):
-    """
-    The base class from which all management commands ultimately
-    derive.
-    """
-
-    def __init__(self, args=None):
-        self.args = args     
-              
-            
-    def execute(self, args):
-        self.args = args
-        try:
-            self.handle()
-        except CommandError, e:
-            sys.stderr.write('Error: %s\n' % e)
-            sys.exit(1)
-
-    def handle(self):
-        """
-        The actual logic of the command. Subclasses must implement
-        this method.
-        """
-        raise NotImplementedError()

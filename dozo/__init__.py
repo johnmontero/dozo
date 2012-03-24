@@ -2,82 +2,61 @@
 """
 dozo: typing commands on the fly.
 
-Version: {0}
-
 Usage:
-    dozo [options] 
+    dozo [subcommands]
 
-Options:
-    --version, version      Shows the current installed version
+    --h, --help, help     Prints this help text and exits.    
 """
 
 import sys
-from dozo.argopts   import ArgOpts
-from dozo.commands  import CommandError
-from dozo.util      import get_commands, run_command, get_sumary_commad
-from dozo.util      import out, error
 
-__version__         = '0.0.1'
+from tambo import Transport
 
-class DozoCommands(object):
+from dozo.util      import get_cmds_extend
+from dozo.util      import load_cmd_extend
+from dozo.commands  import config
+from dozo.commands  import extend
 
-    def __init__(self, argv=None, test=True):
-        self.test = test
-        
-        if argv is None:
-            argv = sys.argv
+__version__         = '0.0.2'
 
-        self.parseArgs(argv)
+class DozoApp(object):
 
-    def parseArgs(self, argv):
+    mapper = {
+        'config'    : config.Command,
+        'extend'    : extend.Command
+    }
+    
+    def __init__(self, argv=None, parse=True):
+        self.argv = argv or sys.argv
+        if parse:
+            self.parse_args(self.argv)
 
-        """ Commands
-        """
-        commands    = get_commands()
-        commands.sort()
-        options  = ['--%s' % cmd for cmd in commands]
-        options_help = ['    --%-20s  %-5s' % (cmd, get_sumary_commad(cmd))
-                         for cmd in commands]
-        
-        dozo_help  = __doc__.format(__version__)
-        dozo_help += '\n'.join(options_help)+'\n\n'
-
-        
-        """ Commands Extend
-        """
-        commands_ext = get_commands(extend=True)
-
-        if len(commands_ext) is not 0:
-            commands_ext.sort()
-            options_ext  = ['--%s' % cmd for cmd in commands_ext]
-            options_ext_help = ['    --%-20s  %-5s' % (cmd, get_sumary_commad(cmd))
-                         for cmd in commands_ext]
-
-            options.extend(options_ext)
-
-            dozo_help += 'Options Extend:\n'+'\n'.join(options_ext_help)+'\n\n'
-        
-        args = ArgOpts(options)
-        args.parse_args(argv)
+    def get_commands_extend(self):
+        cmds = get_cmds_extend()
+        if len(cmds) is not 0:
+            for cmd in cmds:
+                if cmd not in ['config','extend']:
+                    self.mapper.update({ "%s" % cmd: 
+                                     load_cmd_extend(cmd) })
                         
-        if args.catches_help():
-            out(dozo_help)
+    def parse_args(self, argv):
+        """
+        Main method for parsing arguments, it uses whatever `argv` is although
+        it should always be a list. Once it goes through the ``Transport`` class
+        it tries to generate the help from the mapped classes and the current
+        docstring for this module.
 
-        elif args.catches_version():
-            message = "dozo version %s\n" % __version__
-            out(message)
+        If nothing matches it will return the help.
+        """
+        
+        self.get_commands_extend()
 
-        elif args.match:
-            try:
-                try:
-                    run_command(args.match[0][2:]).execute(args)
-                except CommandError, e:
-                    error('%s\n' % e)
-            except KeyboardInterrupt:
-                out("Exiting from dozo.\n")
-        else:
-            out(dozo_help)
-
+        transport = Transport(argv, self.mapper)
+        transport.catch_help    = "%s \n%s" % (__doc__, transport.subhelp())
+        transport.catch_version = "dozo version {0}".format(__version__)
+        if len(self.argv) <= 1:
+            transport.print_help()
+        transport.dispatch()
 
 def main():
-    DozoCommands()
+    DozoApp()

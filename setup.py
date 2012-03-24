@@ -9,15 +9,14 @@ except ImportError:
 # determine requirements
 #
 requirements = [
-  "guachi",
-  "pystache",
-  "konira",
-  "envoy"
+    "tambo",
+    "konira",
+    "envoy"
 ]
 
 setup(
     name                    = "dozo",
-    version                 = "0.0.1",
+    version                 = "0.0.2",
     include_package_data    = True,
     # metadata
     author                  = "John Montero",
@@ -36,7 +35,7 @@ setup(
         'Programming Language :: Python :: 2.7'
     ],
     license                 = "BSD",
-    keywords                = "run, option command, console",
+    keywords                = "run, option subcommand, console",
     url                     = "https://github.com/johnmontero/dozo",
     install_requires        = requirements,
     entry_points            =  {
