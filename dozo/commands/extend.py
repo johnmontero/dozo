@@ -6,7 +6,6 @@ from tambo import Transport
 
 from dozo.config    import db
 from dozo.config    import get_config_value
-from dozo.util      import get_cmds_extend
 from dozo.commands  import CommandError
 
 TEMPLATE_OPTION_COMMAND = '''# -*- coding: utf-8-*-

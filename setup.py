@@ -10,8 +10,10 @@ except ImportError:
 #
 requirements = [
     "tambo",
+    "guachi",
     "konira",
-    "envoy"
+    "envoy",
+    "pystache"
 ]
 
 setup(

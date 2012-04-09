@@ -12,8 +12,8 @@ import sys
 
 from tambo import Transport
 
-from dozo.util      import get_cmds_extend
-from dozo.util      import load_cmd_extend
+from dozo.util      import get_extend_commands
+from dozo.util      import load_extend_commands
 from dozo.commands  import config
 from dozo.commands  import extend
 
@@ -31,8 +31,8 @@ class DozoApp(object):
         if parse:
             self.parse_args(self.argv)
 
-    def get_commands_extend(self):
-        cmds = get_cmds_extend()
+    def get_extend_commands(self):
+        cmds = get_extend_commands()
         if len(cmds) is not 0:
             for cmd in cmds:
                 if cmd not in ['config','extend']:
@@ -49,7 +49,7 @@ class DozoApp(object):
         If nothing matches it will return the help.
         """
         
-        self.get_commands_extend()
+        self.get_extend_commands()
 
         transport = Transport(argv, self.mapper)
         transport.catch_help    = "%s \n%s" % (__doc__, transport.subhelp())
