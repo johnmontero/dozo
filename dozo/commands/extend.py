@@ -2,6 +2,7 @@ from os import path
 from os import mkdir
 
 import pystache
+import envoy
 from tambo import Transport
 
 from dozo.config    import db
@@ -88,11 +89,18 @@ class Command(object):
             if value.endswith('.py'):
                 raise CommandError("\nNot include '.py'\n")
 
-            if value in get_cmds_extend():
-                raise CommandError("\nOption command %s exist.\n" % value)
+            path_extend = get_config_value('path-extend')
 
-            filename = '%s/commands/%s.py' % ( get_config_value('path-extend'),
-                                               value )
+            if path_extend is None:
+                print "Path extend is not define."
+                print "Use:\n   dozo extend path /path/to/extend"
+                return
+
+            path_to_file = "{0}/commands/{1}.py".format(path_extend,value)
+            if path.isfile(path_to_file):
+                print "\nOption command '{0}' exist.\n".format(value)
+
+            filename = '%s/commands/%s.py' % ( path_extend, value )
             f = open(filename,'w+')    
             f.write(pystache.render(TEMPLATE_OPTION_COMMAND,
                     {'name':value}))
@@ -114,25 +122,28 @@ class Command(object):
         text_editor = get_config_value('text-editor')
 
         if text_editor is None:
-             raise CommandError('''\n Text editor is not define.\n
-Use:\n   dozo config add text-editor=vim\n''')
+             print "\n Text editor is not define.\n"
+             print "Use:\n   dozo config add text-editor=vim\n"
+             return
 
         path_extend =  get_config_value('path-extend')
         if path_extend is None:
             print('''\n Path extend is not define.\n
 Use:\n   dozo config path-extend /opt/dozo/dozo_extend''')
+            return
 
         filename = '{0}/commands/{1}.py'.format(path_extend, extend_command)
 
         if not path.isfile(filename):
-            raise CommandError('\n{0}: Extend command not exist.\n'.format(
+            print('\n{0}: Extend command not exist.\n'.format(
                                 extend_command))
+            return
 
         cmd = '{0} {1}'.format(text_editor, filename)
         
         r = envoy.run(cmd)
         if r is not 0:
-            raise CommandError('\n{0}\n'.format(r.std_err))
+           print('\n{0}\n'.format(r.std_err))
         
     def cmd_values(self):
         """

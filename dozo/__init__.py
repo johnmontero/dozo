@@ -37,7 +37,7 @@ class DozoApp(object):
             for cmd in cmds:
                 if cmd not in ['config','extend']:
                     self.mapper.update({ "%s" % cmd: 
-                                     load_cmd_extend(cmd) })
+                                     load_extend_commands(cmd) })
                         
     def parse_args(self, argv):
         """
